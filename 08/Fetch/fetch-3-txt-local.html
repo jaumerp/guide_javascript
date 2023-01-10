@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Example de fetch d'un fitxer de text</title>
+  </head>
+  <body>
+    <h1>Example de fetch d'un fitxer de text</h1>
+  </body>
+  <script>
+    fetch('./assets/fitxer.txt')
+      .then(function (response) {
+        if (response.ok) {
+          return response.text()
+        } else {
+          throw new Error(response.status)
+        }
+      })
+      .then(function (data) {
+        console.log('El text retornat:', data)
+      })
+      .catch(function (error) {
+        console.log('Error en el fetch: ', error.message)
+      })
+  </script>
+</html>

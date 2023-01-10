@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Example 6</title>
+  </head>
+  <body>
+    <h1>Example 6</h1>
+    <p>Fetch amb async-await amb captura d'errors</p>
+  </body>
+  <script>
+    // Identificador no existeix en la Rest API
+    //    const myurl = "https://my-json-server.typicode.com/classicoman2/fakeRESTserver/characters/111111";
+    // Servidor incorrecte
+    //    const myurl = "https://mmmmmmy-json-server.typicode.com/classicoman2/fakeRESTserver/characters/1";
+    // Url correcta
+    const myurl = 'https://my-json-server.typicode.com/classicoman2/fakeRESTserver/characters/1000'
+
+    // Funció asíncrona on se concentra el codi asíncron
+    // no necessit més emprar .then()
+    async function getData(url) {
+      const response = await fetch(url)
+      /*** CONTROL ERRORS  ***/
+      if (response.status != 200) {
+        throw new Error('Fetch ha fallat, status = ' + response.status)
+      }
+
+      const json = await response.json()
+      console.info('Dades obtingudes:', json)
+      return json
+    }
+
+    // Només necessito .catch per tractar errors
+    getData(myurl).catch((error) => console.warn('Error en Fetch:', error))
+  </script>
+</html>

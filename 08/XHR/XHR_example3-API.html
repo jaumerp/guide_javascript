@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XHR-examples</title>
+  </head>
+  <body>
+    <h1>Exemple 3</h1>
+    <p>Captura dades d'una API en format JSON</p>
+  </body>
+  <script>
+    const url = 'https://my-json-server.typicode.com/classicoman2/fakeRESTserver/characters/1';
+
+    // Crea objecte XHR
+    var xhr = new XMLHttpRequest();
+
+    // Callback en canviar l'estat
+    xhr.onreadystatechange = function () {
+
+     console.log("responseText val: " + this.responseText )
+
+     /*  if (this.readyState == 4 && this.status == 200) {
+        console.info(this.responseText);
+        console.info( typeof this.responseText )
+      } */
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+  </script>
+</html>

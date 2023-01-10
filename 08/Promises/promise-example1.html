@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    let promesa = new Promise(function (resolve, reject) {
+      var operacio = true
+      //var promesaComplida = false
+
+      if (operacio) {
+        resolve('{"id":125, "dni": "12345678T", "name": "Maria Johnson"}')
+      } else {
+        reject('{"codi":404}')
+      }
+    })
+
+    console.log('ADALT\n')
+
+    // ASÍNCRON
+
+    // Retornar la promesa
+    promesa
+      .then(function (message) {
+        console.info("Aconseguida la informació de l'usuari " + JSON.parse(message).name)
+      })
+      .catch(function (error) {
+        //En cas d'error
+        console.info("S'ha produït l'error " + JSON.parse(error).codi)
+      })
+
+
+
+    console.log('ABAIX\n')
+  </script>
+</html>

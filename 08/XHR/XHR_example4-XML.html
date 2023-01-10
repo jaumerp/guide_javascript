@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XHR-examples</title>
+  </head>
+  <body>
+    <h1>Exemple 4</h1>
+    <p>Captura d'un fitxer en format XML</p>
+  </body>
+  <script>
+    //uri del fitxer xml
+    const url = "localidad_07036.xml";
+
+    // Crea objecte XHR
+    var xhr = new XMLHttpRequest();
+
+    // Callback en canviar l'estat
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.info(this.responseText);
+      }
+    };
+    
+    xhr.open("GET", url);
+    xhr.send();
+  </script>
+</html>

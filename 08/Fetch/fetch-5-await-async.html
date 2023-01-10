@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Example 5</title>
+  </head>
+  <body>
+    <h1>Example 5</h1>
+    <p>Fetch amb async - await</p>
+  </body>
+  <script>
+    //const myurl = "https://my-json-server.typicode.com/classicoman2/fakeRESTserver/characters/1";
+    const myurl = "http://localhost:3000/posts/1";
+
+/*
+    fetch(myurl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+      })
+      .catch(function (error) {
+        console.log('Error en el Fetch:', error)
+      })
+*/
+
+    // Funció asíncrona on se concentra el codi asíncron
+    // no necessit més emprar .then()
+    async function getData(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.info("Dades obtingudes:", data);
+    }
+
+    // Només necessito .catch per tractar errors
+    getData(myurl)
+    .catch((error) => console.error("Error en Fetch:", error));
+
+    
+  </script>
+</html>

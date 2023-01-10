@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Com pintar una imatge en Canvas que es troba en un fitxer</title>
+    <script>
+
+        window.onload = function () {
+
+            // Create the Canvas
+            var ctx = document.getElementById("myCanvas").getContext("2d");
+
+            // Crea objecte Image
+            var img = new Image(); 
+            
+            // Inserir la ruta a la imatge
+            img.src = './assets/edifici.jpg'; // Set source path
+
+            // Si cridam drawImage() abans de carregar la imatge, no se pintarà --> necessitam un event 'load' 
+            // per controlar quan s'ha carregat la imatge, i llavors la podrem pintar.
+            //Si la imatge es trobés en un <img>, podriem pintar directament si el DOM s'ha carregat ja (exemple: canvas-image-en-DOM-html)
+            img.addEventListener('load', function () {
+                
+                // Dimensions of the image
+                let x = 200, y = 191;
+                // execute drawImage
+                ctx.drawImage(img, 20, 20, x, y)
+            }, false);
+        }
+
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+</body>
+
+</html>
